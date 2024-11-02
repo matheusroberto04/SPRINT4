@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TargetCustomer.Models;
 using TargetCustomer.Repository.Interface;
 
 namespace TargetCustomer.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class ClienteController : ControllerBase
     {
@@ -21,6 +23,7 @@ namespace TargetCustomer.Controllers
         /// <response code="500"> Erro ao obter clientes</response>
         /// <response code="404"> Clientes não encontrados</response>
         [HttpGet]
+        
         public async Task<ActionResult<Cliente>> GetCliente()
         {
             try

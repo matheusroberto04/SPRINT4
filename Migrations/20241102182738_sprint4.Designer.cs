@@ -11,15 +11,15 @@ using TargetCustomer.Data;
 namespace TargetCustomer.Migrations
 {
     [DbContext(typeof(dbContext))]
-    [Migration("20240909200753_targetcustomer")]
-    partial class targetcustomer
+    [Migration("20241102182738_sprint4")]
+    partial class sprint4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -32,8 +32,9 @@ namespace TargetCustomer.Migrations
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClienteId"));
 
-                    b.Property<int>("CNPJ")
-                        .HasColumnType("NUMBER(10)");
+                    b.Property<string>("CNPJ")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)");
 
                     b.Property<string>("Email")
                         .IsRequired()

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TargetCustomer.Models;
 using TargetCustomer.Repository.Interface;
 
 namespace TargetCustomer.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class ConsultoriaController : ControllerBase
     {

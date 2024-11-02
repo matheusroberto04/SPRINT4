@@ -1,10 +1,13 @@
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
+using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ML;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using TargetCustomer.Data;
+using TargetCustomer.Models;
 using TargetCustomer.Repository;
 using TargetCustomer.Repository.Interface;
 using TargetCustomer.Services.Autenticacao;
@@ -37,7 +40,7 @@ builder.Services.AddSwaggerGen(options =>
     );
 FirebaseApp.Create(new AppOptions
 {
-    Credential = GoogleCredential.FromFile("autenticacaotdsa.json")
+    Credential = GoogleCredential.FromFile(Path.Combine(AppContext.BaseDirectory, "autenticacaotdsa.json"))
 });
 
 builder.Services.AddHttpClient<IAutenticacaoService, AutenticacaoService>((sp, httpClient) =>
@@ -49,11 +52,10 @@ builder.Services.AddHttpClient<IAutenticacaoService, AutenticacaoService>((sp, h
 builder.Services.AddAuthentication()
         .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, jwtOptions =>
         {
-            jwtOptions.Authority = builder.Configuration["Autenticacao:ValidIssuer"];
-            jwtOptions.Audience = builder.Configuration["Autenticacao:Audience"];
-            jwtOptions.TokenValidationParameters.ValidIssuer = builder.Configuration["Autenticacao:ValidIssuer"];
+            jwtOptions.Authority = builder.Configuration["Authentication:ValidIssuer"];
+            jwtOptions.Audience = builder.Configuration["Authentication:Audience"];
+            jwtOptions.TokenValidationParameters.ValidIssuer = builder.Configuration["Authentication:ValidIssuer"];
         });
-        
 
 var app = builder.Build();
 
@@ -67,6 +69,8 @@ var app = builder.Build();
 
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

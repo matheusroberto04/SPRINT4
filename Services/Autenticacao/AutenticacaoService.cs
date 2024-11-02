@@ -16,7 +16,7 @@ namespace TargetCustomer.Services.Autenticacao
             var credentials = new
             {
                 request.Email,
-                request.Senha,
+                request.Password,
                 returnSecureToken = true
             };
             var response = await _httpClient.PostAsJsonAsync("", credentials);
@@ -24,13 +24,14 @@ namespace TargetCustomer.Services.Autenticacao
             var authFirebasseObject = await response.Content.ReadFromJsonAsync<AutenticacaoFirebase>();
 
             return authFirebasseObject!.IdToken!;
+
         }
         public async Task<string> CadastroAsync(CadastroDto request)
         {
             var userArgs = new UserRecordArgs
             {
                 Email = request.Email,
-                Password = request.Senha
+                Password = request.Password
             };
             var usuario = await FirebaseAuth.DefaultInstance.CreateUserAsync(userArgs);
             return usuario.Uid;

@@ -5,7 +5,7 @@
 namespace TargetCustomer.Migrations
 {
     /// <inheritdoc />
-    public partial class targetcustomer : Migration
+    public partial class sprint4 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +16,7 @@ namespace TargetCustomer.Migrations
                 {
                     ClienteId = table.Column<int>(type: "NUMBER(10)", nullable: false)
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
-                    CNPJ = table.Column<int>(type: "NUMBER(10)", nullable: false),
+                    CNPJ = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Nome = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Logradouro = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     RamodeAtuacao = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
