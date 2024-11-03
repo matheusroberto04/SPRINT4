@@ -14,6 +14,10 @@
 
 *Monolítica, pois utiliza-se uma abordagem mais simples, além de que existe uma facilidade na manutenção, pois o código esta tudo em um único projeto e também existe uma certa rapidez no desenvolvimento*
 
+#**Explicação da utilização do CLEAN CODE**
+
+*Optei por utilizar o CLEAN CODE, pois essa pratica permite deixar o código limpo e organizado, e permite tambem deixar as frases e linhas de código mais curtas, claras e repetição*
+
 #**Desing Patterns utilizados**
 
 - [ ] Repository Pattern
