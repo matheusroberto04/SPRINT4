@@ -18,6 +18,9 @@
 
 *Optei por utilizar o CLEAN CODE, pois essa pratica permite deixar o código limpo e organizado, e permite tambem deixar as frases e linhas de código mais curtas, claras e repetição*
 
+#**Implementação da API de autenticação**
+*Foi implementado a autenticação no login e cadastro de usuarios*
+
 #**Desing Patterns utilizados**
 
 - [ ] Repository Pattern
